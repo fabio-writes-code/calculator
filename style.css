@@ -3,8 +3,9 @@ body{
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: black;
+    background-color: rgb(39, 61, 107);
     color:white;
+    border-style:solid;
 }
 
 .header{
@@ -18,61 +19,77 @@ body{
     background-color: white;
     color:black;
 }
+/* Calculator */
 .buttons{
-    background:white;
-    width: 300px;
     display: flex;
-    justify-content: center;
-    gap: 10px;
-    align-items: center;
-    flex:1 1 auto;
-    flex-shrink: 1;
-    padding:20px;
+    background: thistle;
 }
-button{
-    /* border-radius: 50%; */
-    border-style:none;
-    /* font-size: 30px; */
-}
-/* Operations Column */
-.operations{
-    border-style:solid;
-    /* background-color: red; */
-    max-height: 200px;
-    max-width:50px;
-    display: flex;
+.left-area{
+    display:flex;
     flex-direction: column;
     justify-content: space-evenly;
-    align-items:stretch;
-    flex:1 1 auto;
-    padding: 0px;
-    margin:0px
+    align-items: center;
+    gap: 5px;
+    padding: 5px;
 }
-.operations button{
-    /* font-size: 15px; */
-    /* padding:0px; */
-    /* margin: 0px; */
-    /* border-radius: 50%; */
-    height: 50px;
-    width: 50px;
+.other-buttons{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    width: 100%;
+    background-color: wheat;
 }
-/* Numbers */
+#clear{
+    width:124px;
+    align-self:right;
+}
 .numbers{
     display: flex;
-    justify-content: space-evenly;
-    /* background-color: blue; */
-    align-items: center;
-    max-width:200px;
-    height: 200px;
-    flex:1 1 auto;
-    flex-wrap: wrap;
-    gap:5px;
-    padding: 0px;
-
+    flex-direction: column;
+    gap: 5px;
 }
-.numbers button{
-    width: 50px;
-    height: 50px;
-    font-size: 25px;
-    flex:1 1 1;
+.row-4{
+    display: flex;
+    gap:5px
+}
+#equal{
+    width: 122px;
+}
+.buttons button{
+    width: 60px;
+    height: 60px;
+    border-radius: 10%;
+    border-style: none;
+    margin: 0px;
+    font-size: large;
+}
+div{
+    padding: 0px;
+    margin:0px;
+    border:0px;
+}
+/* Operations area */
+.operations{
+    display: flex;
+    flex-direction: column;
+    background-color: tomato;
+    justify-content: flex-end;
+    align-items: flex-end;
+    flex:1 1 auto;
+    padding: 5px;
+    gap: 5px;
+}
+
+.rest{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    gap: 5px;
+}
+.plus{
+    height: 100%;
+    background-color: violet;
+}
+.plus button{
+    height: 100%;
 }
