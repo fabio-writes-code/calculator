@@ -18,6 +18,7 @@ body{
 .display{
     background-color: white;
     color:black;
+    font-size: x-large;
 }
 /* Calculator */
 .buttons{
@@ -48,13 +49,13 @@ body{
     flex-direction: column;
     gap: 5px;
 }
-.row-4{
+/* .row-4{
     display: flex;
     gap:5px
 }
 #equal{
     width: 122px;
-}
+} */
 .buttons button{
     width: 60px;
     height: 60px;
