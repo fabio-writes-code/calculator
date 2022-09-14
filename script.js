@@ -8,6 +8,8 @@ let firstNumber=display.textContent;
 let secondNumber=0;
 let storedOperation=0
 let operators=['plus','minus','times','division']
+let justEqualed=false;
+let theDot=false;
 
 function clear(){
     pressedOperation=false
@@ -15,11 +17,18 @@ function clear(){
     secondNumber=0;
     storedOperation=0;
     display.textContent=0;
+    justEqualed=false
+    theDot=false
     firstNumber=display.textContent;
 }
+
 function buttonSelector(btnId){
     let previousNumber=display.textContent;
-
+    // console.log('ENTRY')
+    // console.log('BtnID:',btnId)
+    // console.log('pressed Operation:',pressedOperation)
+    // console.log('stored Op:',storedOperation)
+    // console.log('Just Equal:',justEqualed)
 
     //Clear
     if (btnId==='clear'){
@@ -27,6 +36,21 @@ function buttonSelector(btnId){
         return;
     }
     
+    //Equal was just pressed
+    if (justEqualed){
+        if (parseInt(btnId) || parseInt(btnId)===0){
+            display.textContent=btnId;
+            pendingOperator=null
+            justEqualed=false
+            return;
+        } 
+        if(btnId==='dot'){ display.textContent='0.';
+            justEqualed=false;
+            theDot=true;
+            return;
+        }
+    }
+
     //INPUT NUMBERS
     // Avoids storing multiple zeroes
     if (previousNumber==='0' && (parseInt(btnId) || parseInt(btnId)===0)){
@@ -46,25 +70,36 @@ function buttonSelector(btnId){
             pressedOperation=false;
             return;
         }
+        if(btnId==='dot'){
+            display.textContent='0.'
+            pressedOperation=false
+            theDot=true;
+            return;
+        }
         if (operators.includes(btnId)){
             pendingOperator=btnId;
             pressedOperation=true;
             return;
         }
-        if (btnId==='equal') return
-        return
+    }
+
+    // TheDot
+    if (btnId==='dot' && !theDot){
+        theDot=true;
+        display.textContent=previousNumber+'.'
+        return;
     }
 
     // Equal
     if (btnId==='equal') resolveOperator(false)
-
+    
 
     // When an operator works as equal as well, prevents iteration
     if (operators.includes(btnId) && storedOperation===1){
+        secondNumber=0;
         resolveOperator(true);
     }
 
-    
 
     // Number Selector for display
     if (parseInt(btnId) || parseInt(btnId)===0){
@@ -91,33 +126,35 @@ function buttonSelector(btnId){
     }
 }
 function storeData(operator){
-    firstNumber=parseInt(display.textContent);
+    firstNumber=Number(display.textContent);
     pressedOperation=true;
     secondNumber=0;
-
+    justEqualed=false;
+    theDot=false
     pendingOperator=operator;
     if (pendingOperator) storedOperation=1;
-    
 
 }
 
 function resolveOperator(opButton){
-    console.log(opButton)
     if (!pendingOperator) return
-
-    // Is the second number of the operation stored or grabbed
+    
+    // Equal Button is pressed
     if (!opButton){
-        if (secondNumber===0 || secondOperation===true){
-            secondNumber=parseInt(display.textContent)
-            secondOperation=false;
+        // Storing secondNumber if empty
+        if (secondNumber===0){
+            secondNumber=Number(display.textContent)
         }
+        justEqualed=true;
+        pressedOperation=false;
         storedOperation=0;
     }
 
 
     // When resolving through an operator button
     if(opButton){
-        secondNumber=parseInt(display.textContent);
+        secondNumber=Number(display.textContent);
+        pressedOperation=true
     }
 
     result=0;
@@ -135,9 +172,8 @@ function resolveOperator(opButton){
             result=firstNumber/secondNumber;
             break;
     }
-
-    console.log(firstNumber,secondNumber,pendingOperator, result)
     display.textContent=result;
-    firstNumber=parseInt(display.textContent);
+    theDot=false
+    firstNumber=Number(display.textContent);
     
 }
