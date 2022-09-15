@@ -3,27 +3,52 @@ body{
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: rgb(39, 61, 107);
-    color:white;
-    border-style:solid;
+    background-color: #f5f5f5;
+    color:#2f2f2f;
+    font-family: 'Orbitron', sans-serif;
 }
 
 .header{
-    color:white;
+    color:#2f2f2f;
     font-size: 20px;
     padding: 10px 40px 0 40px;
     text-transform: uppercase;
     text-shadow: 0 5px 5px rgba(0, 0, 0, 0.2);
 }
+
+/* Calculator */
+.calculator{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: hsl(208, 28%, 35%);
+    background: linear-gradient(to top, hsl(208, 30%, 35%), hsl(208, 30%, 40%));
+    border-radius: 10px;
+    box-shadow: 0 25px 60px -10px rgba(0,0,0,0.5);
+    padding:25px 20px;
+    gap:15px;
+}
 .display{
-    background-color: white;
+    background: hsl(190, 20%, 88%);
+    box-shadow: inset 0 0 3px black;
     color:black;
     font-size: x-large;
+    font-weight: bold;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    width: 100%;
+    padding: 10px 0px;
+    border-radius: 5px;
 }
-/* Calculator */
 .buttons{
     display: flex;
-    background: thistle;
+    color: hsl(225, 20%, 84%);
+    font-family: inherit;
+    cursor: pointer;
+    padding: 10px;
+    border-radius: 10px;
 }
 .left-area{
     display:flex;
@@ -38,7 +63,7 @@ body{
     justify-content: flex-end;
     align-items: center;
     width: 100%;
-    background-color: wheat;
+    /* background-color: wheat; */
 }
 #clear{
     width:124px;
@@ -49,20 +74,24 @@ body{
     flex-direction: column;
     gap: 5px;
 }
-/* .row-4{
-    display: flex;
-    gap:5px
-}
-#equal{
-    width: 122px;
-} */
+
 .buttons button{
     width: 60px;
     height: 60px;
-    border-radius: 10%;
+    border-radius: 5px;
     border-style: none;
     margin: 0px;
-    font-size: large;
+    font-size:medium;
+    font-family: inherit;
+    background-color: #2f2f2f;
+    color: #f5f5f5;
+    box-shadow: 2px 2px 5px 0 hsla(0, 0%, 0%, .75);
+    transition-duration: 0.1s;
+    margin: 3px;
+}
+.buttons button:hover{
+    background-color: #7d7d7d;
+    color: white;
 }
 div{
     padding: 0px;
@@ -79,6 +108,7 @@ div{
     flex:1 1 auto;
     padding: 5px;
     gap: 5px;
+    border-radius: 10px;
 }
 
 .rest{
@@ -89,7 +119,7 @@ div{
 }
 .plus{
     height: 100%;
-    background-color: violet;
+    /* background-color: violet; */
 }
 .plus button{
     height: 100%;

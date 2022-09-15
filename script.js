@@ -172,6 +172,7 @@ function resolveOperator(opButton){
             result=firstNumber/secondNumber;
             break;
     }
+    result=Math.round(result*10000000)/10000000;
     display.textContent=result;
     theDot=false
     firstNumber=Number(display.textContent);
